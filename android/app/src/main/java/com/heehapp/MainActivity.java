@@ -1,9 +1,15 @@
 package com.heehapp;
 
+import android.os.Bundle; //Added by T.Y.X.D
 import com.facebook.react.ReactActivity;
+import org.devio.rn.splashscreen.SplashScreen; //Added by T.Y.X.D
 
 public class MainActivity extends ReactActivity {
-
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        SplashScreen.show(this); //Added by T.Y.X.D
+        super.onCreate(savedInstanceState);
+    }
     /**
      * Returns the name of the main component registered from JavaScript.
      * This is used to schedule rendering of the component.

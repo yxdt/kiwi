@@ -8,6 +8,7 @@ import store from '../redux/store';
 import DeveloperMenu from '../components/DeveloperMenu';
 
 import {NavigationActions} from 'react-navigation';
+import SplashScreen from 'react-native-splash-screen';
 
 class AppView extends Component {
   static displayName = 'AppView';
@@ -38,7 +39,7 @@ class AppView extends Component {
 
   componentDidMount() {
     snapshotUtil.resetSnapshot()
-      .then(snapshot => {
+      .then(snapshot =>{
         const {dispatch} = this.props;
 
         if (snapshot) {
@@ -47,10 +48,12 @@ class AppView extends Component {
           dispatch(SessionStateActions.initializeSessionState());
         }
 
-        store.subscribe(() => {
+        store.subscribe(() =>{
           snapshotUtil.saveSnapshot(store.getState());
         });
+        SplashScreen.hide();
       });
+
   }
 
   render() {

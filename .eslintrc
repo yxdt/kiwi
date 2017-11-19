@@ -23,7 +23,7 @@
   "rules": {
     "indent": [2, 2, {"SwitchCase": 1}],
     "quotes": [2,"single"],
-    "linebreak-style": [2,"unix"],
+    "linebreak-style": [2,"windows"],
     "semi": [2,"always"],
     "no-console": 0,
     "max-len": [1,110],
@@ -46,10 +46,10 @@
     "new-parens": 2,
     "no-mixed-spaces-and-tabs": 2,
     "no-multiple-empty-lines": [1, {"max": 1}],
-    "no-nested-ternary": 2,
+    "no-nested-ternary": 1,
     "no-new-object": 2,
     "no-spaced-func": 2,
-    "arrow-spacing": [2, {"before": true, "after": true}],
+    "arrow-spacing": [2, {"before": true, "after": false}],
     "operator-assignment": [2, "always"],
     "operator-linebreak": [2, "after", {
       "overrides": {
@@ -59,7 +59,7 @@
       }
     ],
     "keyword-spacing": ["error", {before: true, after: true}],
-    "space-before-blocks": [2, "always"],
+    "space-before-blocks": [1, "always"],
     "space-before-function-paren": [2, "never"],
     "object-curly-spacing": [2, "never"],
     "array-bracket-spacing": [2, "never"],
@@ -73,7 +73,7 @@
     "no-shadow-restricted-names": 2,
     "no-undef-init": 2,
     "no-undef": 2,
-    "no-undefined": 2,
+    "no-undefined": 1,
     "no-unused-vars": [2, {
       "vars": "all",
       "args": "after-used",
@@ -93,7 +93,7 @@
     "default-case": 2,
     "no-iterator": 2,
     "no-loop-func": 2,
-    "no-multi-spaces": 2,
+    "no-multi-spaces": 1,
     "no-multi-str": 2,
     "no-new": 2,
     "no-param-reassign": 2,

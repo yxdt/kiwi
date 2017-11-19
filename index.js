@@ -15,4 +15,4 @@ class heehApp extends Component {
   }
 }
 
-AppRegistry.registerComponent('heehApp', () => heehApp);
+AppRegistry.registerComponent('heehApp', () =>heehApp);
