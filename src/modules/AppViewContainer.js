@@ -12,8 +12,6 @@ export default connect(
   }),
   dispatch =>{
     return {
-      //resetSessionStateFromSnapshot: bindActionCreators(SessionStateActions, dispatch),
-      //initializeSessionState: bindActionCreators(SessionStateActions, dispatch)
 
       sessionStateActions: bindActionCreators(SessionStateActions, dispatch)
 

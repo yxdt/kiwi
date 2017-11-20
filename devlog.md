@@ -30,12 +30,14 @@
 
 ## 系统功能
 
-1. 初始启动页面
+1. Splash Screen
+1. 初始启动App功能介绍页面
 
 ## 系统更新说明
 
-1. 添加系统启动页面功能：
+1. 添加系统启动页面(Splash Screen)功能：
     ```Shell
     npm install react-native-splash-screen -–save
     react-native link react-native-splash-screen
     ```
+1. 增加了首次运行时的引导页面

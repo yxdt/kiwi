@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import {ScrollView, Image, StyleSheet, Dimensions, TouchableOpacity, Text} from 'react-native';
 import PropTypes from 'prop-types';
+import * as configuration from '../utils/configuration';
 
 const {width, height} = Dimensions.get('window');
 
@@ -19,24 +20,31 @@ class GuideScreen extends Component {
   render() {
     return (
             <ScrollView
-            contentContainerStyle={styles.contentContainer}
-            bounces={false}
-            pagingEnabled={true}
-            horizontal={true}>
-            {this.props.guidePics.map((item,i) =>{
-              if (i < this.props.guidePics.length - 1) {
-                return <Image source={{uri: item}} key={'image_' + i} style={styles.backgroundImage} />;
-              }
-              return (<Image source={{uri: item}} key={'image_' + i} style={[styles.backgroundImage, styles.btnOut]} >
-                  <TouchableOpacity
-                    style={styles.btn}
-                    onPress={() =>{this.props.guideDone();}}
-                    elevation ={5}
-                  >
-                    <Text style={styles.btnText}>点 击 进 入</Text>
-                  </TouchableOpacity>
-                </Image>);
-            })}
+              contentContainerStyle={styles.contentContainer}
+              bounces={false}
+              pagingEnabled={true}
+              horizontal={true}>
+                {this.props.guidePics.map((item,i) =>{
+                  if (i < this.props.guidePics.length - 1) {
+                    return (
+                        <Image source={{uri: item}} key={'image_' + i} style={styles.backgroundImage} >
+                          <Text style={styles.verText}>
+                            Ver.{global.VERSION}
+                          </Text>
+                        </Image>
+                    );
+
+                  }
+                  return (<Image source={{uri: item}} key={'image_' + i} style={[styles.backgroundImage, styles.btnOut]}>
+                    <TouchableOpacity
+                      style={styles.btn}
+                      onPress={() =>{this.props.guideDone();}}
+                      elevation ={5}
+                    >
+                      <Text style={styles.btnText}>点 击 进 入</Text>
+                    </TouchableOpacity>
+                  </Image>);
+                })}
         </ScrollView>
     );
   }
@@ -65,11 +73,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: height - 150
-
   },
   btnText: {
     fontSize: 18,
     color: '#fff'
+  },
+  verText: {
+    fontSize: 12,
+    color: '#fffc',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 150
   }
 });
 
