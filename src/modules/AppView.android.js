@@ -10,12 +10,21 @@ import DeveloperMenu from '../components/DeveloperMenu';
 import {NavigationActions} from 'react-navigation';
 import SplashScreen from 'react-native-splash-screen';
 
+import GuideScreen from '../components/GuideScreen';
+
 class AppView extends Component {
   static displayName = 'AppView';
 
   static propTypes = {
     isReady: PropTypes.bool.isRequired,
-    dispatch: PropTypes.func.isRequired
+    showInstr: PropTypes.bool,
+    firstTime: PropTypes.bool,
+
+    sessionStateActions: PropTypes.shape({
+      firstTimeDone: PropTypes.func.isRequired,
+      resetSessionStateFromSnapshot: PropTypes.func.isRequired,
+      initializeSessionState: PropTypes.func.isRequired
+    })
   };
 
   navigateBack() {
@@ -40,12 +49,12 @@ class AppView extends Component {
   componentDidMount() {
     snapshotUtil.resetSnapshot()
       .then(snapshot =>{
-        const {dispatch} = this.props;
 
         if (snapshot) {
-          dispatch(SessionStateActions.resetSessionStateFromSnapshot(snapshot));
+          this.props.sessionStateActions.resetSessionStateFromSnapshot(snapshot);
         } else {
-          dispatch(SessionStateActions.initializeSessionState());
+          //dispatch(SessionStateActions.initializeSessionState());
+          this.props.sessionStateActions.initializeSessionState();
         }
 
         store.subscribe(() =>{
@@ -53,10 +62,16 @@ class AppView extends Component {
         });
         SplashScreen.hide();
       });
-
+  }
+  firstTimeDone = () =>{
+    console.log('AppView.firstTimeDone');
+    this.props.sessionStateActions.firstTimeDone();
   }
 
   render() {
+    if (this.props.firstTime) {
+      return (<GuideScreen guidePics={['pic0', 'pic1', 'pic2', 'pic3']} guideDone ={() =>{this.firstTimeDone();}}/>);
+    }
     if (!this.props.isReady) {
       return (
         <View style={{flex: 1}}>
